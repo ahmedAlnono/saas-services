@@ -1,0 +1,35 @@
+.card {
+  width: 400px;
+  height: 400px;
+}
+
+.slidedown-icon {
+  animation: slidedown-icon;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.box {
+  background-image: radial-gradient(var(--primary-300), var(--primary-600));
+  border-radius: 50% !important;
+  color: var(--primary-color-text);
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  height: 10rem;
+  width: 10rem;
+  transition-duration: 1s;
+  background-color: blue;
+  animation-duration: 3s;
+
+  @media (min-width: 640px) {
+    // Responsive styles for 'sm'
+    height: 15rem;
+    width: 15rem;
+  }
+}

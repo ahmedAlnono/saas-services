@@ -1,0 +1,62 @@
+<div class="mobile-sidebar">
+    <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
+        <div class="sidebar">
+            <div routerLink="/dashboard" class="sidebar-item">
+                <i class="pi pi-user"></i>
+                <h3>Dashboard</h3>
+            </div>
+            <div routerLink="/orders" class="sidebar-item">
+                <i class="pi pi-shopping-cart"></i>
+                <h3>Orders</h3>
+            </div>
+            <div routerLink="/chart" class="sidebar-item">
+                <i class="pi pi-chart-line"></i>
+                <h3>Vehicle Data</h3>
+            </div>
+            <div routerLink="/files" class="sidebar-item">
+                <i class="pi pi-file"></i>
+                <h3>Files</h3>
+            </div>
+            <hr>
+            <div routerLink="/settings" class="sidebar-item">
+                <i class="pi pi-cog"></i>
+                <h3>Settings</h3>
+            </div>
+
+        </div>
+    </p-sidebar>
+    <p-button (onClick)="sidebarVisible = true" icon="pi pi-list" [style]="{
+    padding: '8px',
+    position: 'fixed',
+    top: '3px',
+    right: 0,
+    zIndex: 9999999
+}"></p-button>
+</div>
+
+<div class="desktop-sidebar">
+    <div class="sidebar">
+        <a routerLink="/dashboard" class="sidebar-item">
+            <i class="pi pi-user"></i>
+            <h3>Dashboard</h3>
+        </a>
+        <a routerLink="/orders" class="sidebar-item">
+            <i class="pi pi-shopping-cart"></i>
+            <h3>Orders</h3>
+        </a>
+        <a routerLink="/chart" class="sidebar-item">
+            <i class="pi pi-chart-line"></i>
+            <h3>Vehicle Data</h3>
+        </a>
+        <a routerLink="/files" class="sidebar-item">
+            <i class="pi pi-file"></i>
+            <h3>Files</h3>
+        </a>
+        <hr>
+        <a routerLink="/settings" class="sidebar-item">
+            <i class="pi pi-cog"></i>
+            <h3>Settings</h3>
+        </a>
+
+    </div>
+</div>
