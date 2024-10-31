@@ -1,0 +1,41 @@
+section {
+  display: flex;
+  justify-content: flex-start;
+  .my-chart {
+    width: 70dvw;
+    height: 100%;
+    padding: 15px;
+  }
+  h1,
+  h2 {
+    padding: 10px;
+  }
+}
+.table {
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: scroll;
+  height: fit-content;
+  width: clamp(300px, 800px, 800px);
+}
+
+@media screen and (width <=800px) {
+  .chart-sec {
+    width: 100%;
+  }
+}
+@media screen and (width <= 480px) {
+  .my-chart {
+    width: calc(100dvw - 15px);
+    padding: 0;
+    margin: 0;
+  }
+  .chart-sec {
+    width: auto;
+  }
+  section {
+    .card {
+      width: calc(100dvw - 15px);
+    }
+  }
+}

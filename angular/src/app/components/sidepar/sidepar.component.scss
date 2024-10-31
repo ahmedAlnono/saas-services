@@ -1,0 +1,48 @@
+.sidebar {
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  background-color: rgb(42, 52, 85);
+  padding: 10px;
+  height: 100dvh;
+  position: fixed;
+  left: 0;
+  .sidebar-item {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    gap: 20px;
+    align-items: center;
+    margin: 2px;
+    padding-left: 15px;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    &:hover {
+      background-color: rgb(81, 100, 163);
+    }
+  }
+}
+
+.mobile-sidebar {
+  margin-top: 25px;
+  display: none;
+  .sidebar {
+    width: 320px;
+  }
+}
+.desktop-sidebar {
+  margin-top: 25px;
+  width: fit-content;
+  position: fixed;
+  top: 0;
+}
+
+@media screen and (width <= 800px) {
+  .mobile-sidebar {
+    display: flex;
+  }
+  .desktop-sidebar {
+    display: none;
+  }
+}
