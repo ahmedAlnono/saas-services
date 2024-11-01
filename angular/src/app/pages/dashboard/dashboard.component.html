@@ -1,1 +1,66 @@
-<section>dashboard works!</section>
+<section>
+    <h1 class="name">Hello Name</h1>
+    <div class="card">
+        <div class="card-item">
+            <i class="pi pi-user"></i>
+            @if (isServiceProvider) {
+            <p>Total Customers</p>
+            } @else {
+            <p>Total Projects</p>
+            }
+            <h1>0</h1>
+        </div>
+        <div class="card-item">
+            <i class="pi pi-calendar"></i>
+            <p>Finished Projects</p>
+            <h1>0</h1>
+        </div>
+        <div class="card-item">
+            <i class="pi pi-wifi"></i>
+            <p>Active Service Provider</p>
+            <h1>2</h1>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="card">
+        @if (isServiceProvider) {
+        <h1>All Projects</h1>
+        } @else {
+        <h1>All Customers</h1>
+        }
+        <div class="dashboard-search">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText placeholder="search">
+        </div>
+        <div class="card">
+            <h1>sort by</h1>
+            <select name="sort" id="dashboard-sort">
+                <option value="name">name</option>
+                <option value="newest">newest</option>
+                <option value="price">price</option>
+            </select>
+        </div>
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

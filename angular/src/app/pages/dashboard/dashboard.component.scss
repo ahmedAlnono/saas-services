@@ -1,0 +1,48 @@
+section {
+  padding: 20px;
+}
+.name {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.card-item {
+  display: block;
+  background-color: aquamarine;
+  padding: 10px;
+  min-width: 300px;
+  width: 350px;
+  border-radius: 10px;
+  i {
+    float: left;
+    font-size: 40px;
+    padding: 10px;
+    background-color: rgb(206, 211, 253);
+    border-radius: 50%;
+    color: rgb(89, 0, 255);
+  }
+
+  h1 {
+    margin-top: 3px;
+    margin-left: 100px;
+    font-size: 2rem;
+  }
+  p {
+    color: cadetblue;
+  }
+}
+
+.dashboard-search {
+  background-color: none;
+  padding: 10px;
+  position: relative;
+  input {
+    padding: 5px;
+    margin-left: 5px;
+  }
+  i {
+    position: absolute;
+    left: calc(100% - 40px);
+    bottom: calc(50% - 5px);
+  }
+}

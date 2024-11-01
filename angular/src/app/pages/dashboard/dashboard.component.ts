@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { FloatLabelModule } from "primeng/floatlabel";
+import { InputTextModule } from "primeng/inputtext";
 
 @Component({
-  selector: 'app-dashboard',
+  selector: "app-dashboard",
   standalone: true,
-  imports: [],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+  imports: [InputTextModule, FloatLabelModule],
+  templateUrl: "./dashboard.component.html",
+  styleUrl: "./dashboard.component.scss",
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  isServiceProvider = false;
+  constructor() {
+    if (localStorage.getItem("isServiceProvider") == "true") {
+      this.isServiceProvider = true;
+    }
+  }
+}
