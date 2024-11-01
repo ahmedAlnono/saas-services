@@ -3,6 +3,7 @@ import { Sequelize } from 'sequelize-typescript';
 import { Comment } from 'src/models/comment.model';
 import { Notification } from 'src/models/notification.model';
 import { Project } from 'src/models/project.model';
+import { ServiceProvider } from 'src/models/server-provider.model';
 import { User } from 'src/models/user.model';
 
 export const databaseProviders = [
@@ -18,7 +19,13 @@ export const databaseProviders = [
         password: configService.get<string>('DB_PASSWORD'),
         database: configService.get<string>('DB_DATABASE'),
       });
-      sequelize.addModels([User, Comment, Project, Notification]);
+      sequelize.addModels([
+        User,
+        Comment,
+        Project,
+        Notification,
+        ServiceProvider,
+      ]);
       return sequelize;
     },
   },

@@ -1,9 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, model, ViewChild } from '@angular/core';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { Sidebar } from 'primeng/sidebar';
 import { TreeModule } from 'primeng/tree';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TreeNode } from 'primeng/api';
 
 @Component({
   selector: 'sidebar-headless',
@@ -25,5 +26,5 @@ export class SidebarHeadless {
     this.sidebarRef.close(e);
   }
 
-  sidebarVisible: boolean = false;
+  sidebarVisible = model(false);
 }

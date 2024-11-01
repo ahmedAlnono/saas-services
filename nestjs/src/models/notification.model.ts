@@ -6,6 +6,7 @@ import {
   DataType,
 } from 'sequelize-typescript';
 import { User } from './user.model';
+import { ServiceProvider } from './server-provider.model';
 
 @Table({
   paranoid: true,
@@ -20,4 +21,7 @@ export class Notification extends Model {
 
   @ForeignKey(() => User)
   userId: User;
+
+  @ForeignKey(() => ServiceProvider)
+  providerId: ServiceProvider;
 }

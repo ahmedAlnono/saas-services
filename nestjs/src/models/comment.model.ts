@@ -3,7 +3,6 @@ import {
   Table,
   Column,
   ForeignKey,
-  HasMany,
   DataType,
 } from 'sequelize-typescript';
 import { User } from './user.model';
@@ -21,9 +20,6 @@ export class Comment extends Model {
   @Column
   description: string;
 
-  @ForeignKey(() => Comment)
-  reblyComentId: number;
-
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
@@ -33,9 +29,6 @@ export class Comment extends Model {
 
   @ForeignKey(() => Project)
   projectId: Project;
-
-  @HasMany(() => Comment)
-  Replys: number[];
 
   @Column
   photos: string;

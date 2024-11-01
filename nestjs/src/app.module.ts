@@ -7,6 +7,7 @@ import { GlobalAuthGuard } from './auth/auth.guard';
 import { ConfigModule } from '@nestjs/config';
 import { ProjectModule } from './project/project.module';
 import { FilesModule } from './files/files.module';
+import { ServiceProviderModule } from './service-provider/service-provider.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { FilesModule } from './files/files.module';
     }),
     ProjectModule,
     FilesModule,
+    ServiceProviderModule,
   ],
   controllers: [],
   providers: [

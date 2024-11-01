@@ -9,7 +9,7 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import * as bcrypt from 'bcrypt';
-import { Notification } from './notification.model';
+import { Comment } from './comment.model';
 
 @Table({
   paranoid: true,
@@ -31,15 +31,8 @@ export class User extends Model {
   })
   hash: string;
 
-  @Column({
-    type: DataType.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  })
-  isServiceProvider: boolean;
-
-  @HasMany(() => Notification)
-  notifications: number[];
+  @HasMany(() => Comment)
+  comments: Comment[];
 
   @BeforeCreate
   static async hashPassword(user: User) {

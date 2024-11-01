@@ -76,10 +76,4 @@ export class ProjectController {
   cancel() {
     return 'payment canceled';
   }
-
-  // @Public()
-  // @Get('c')
-  // cancelA(@Res() res: Response) {
-  //   return res.redirect('http://localhost:3000/project/cancel-payment');
-  // }
 }

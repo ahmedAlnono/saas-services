@@ -9,12 +9,6 @@ import { userJwtPayload } from './dto/user-jwt-paylaod.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Public()
-  @Get('')
-  findAllServiceProvider() {
-    return this.userService.findAllServiceProvider();
-  }
-
   @Get('notification')
   getNotification(@UserIdentity() user: userJwtPayload) {
     return this.userService.findNotification(user);

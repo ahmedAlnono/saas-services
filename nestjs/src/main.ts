@@ -11,7 +11,10 @@ async function bootstrap(configService: ConfigService) {
   app.useGlobalGuards();
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
-    origin: ['http://localhost:4200'],
+    origin: [
+      configService.get<string>('MAIN_ORIGIN'),
+      configService.get<string>('STRIPE_ORIGIN'),
+    ],
   });
   const config = new DocumentBuilder()
     .setTitle('Personal website')
@@ -20,6 +23,7 @@ async function bootstrap(configService: ConfigService) {
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('', app, documentFactory);
+
   await app.listen(configService.get<string>('APP_PORT'));
 }
 bootstrap(new ConfigService());

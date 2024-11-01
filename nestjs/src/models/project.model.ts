@@ -66,8 +66,8 @@ export class Project extends Model {
   deadLine: Date;
 
   @ForeignKey(() => User)
-  owner: number;
+  owner: User;
 
   @HasMany(() => Comment)
-  commnets: number[];
+  commnets: Comment[];
 }
