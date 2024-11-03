@@ -1,13 +1,9 @@
 <section>
-    <h1 class="name">Hello Name</h1>
+    <h1 class="name">Hello {{name}} </h1>
     <div class="card">
         <div class="card-item">
             <i class="pi pi-user"></i>
-            @if (isServiceProvider) {
-            <p>Total Customers</p>
-            } @else {
             <p>Total Projects</p>
-            }
             <h1>0</h1>
         </div>
         <div class="card-item">
@@ -25,11 +21,6 @@
 
 <section>
     <div class="card">
-        @if (isServiceProvider) {
-        <h1>All Projects</h1>
-        } @else {
-        <h1>All Customers</h1>
-        }
         <div class="dashboard-search">
             <i class="pi pi-search"></i>
             <input type="text" pInputText placeholder="search">
@@ -45,20 +36,35 @@
     </div>
     <div class="card">
         <table>
+            <caption>
+                <h1>All Projects</h1>
+            </caption>
             <thead>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>Name</td>
+                    <td>Dead Line</td>
+                    <td>Status</td>
+                    <td>Completed</td>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
                 </tr>
             </tbody>
         </table>

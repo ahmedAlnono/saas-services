@@ -18,8 +18,6 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   login(e: SubmitEvent) {
-    console.log(this.email);
-    console.log(this.password);
     const body: LoginDto = {
       email: this.email,
       password: this.password,

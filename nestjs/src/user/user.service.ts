@@ -4,6 +4,7 @@ import { NOTIFICATION_MODEL, USER_MODEL } from 'constants/constants';
 import { User } from 'src/models/user.model';
 import { Notification } from 'src/models/notification.model';
 import { userJwtPayload } from './dto/user-jwt-paylaod.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -14,33 +15,24 @@ export class UserService {
     private notification: typeof Notification,
   ) {}
 
-  async findAllServiceProvider() {
-    return this.user.findAll({
-      where: {
-        isServiceProvider: true,
-      },
-    });
-  }
-
-  async findOne(id: number) {
+  async getUser(id: number) {
     return await this.user.findByPk(id, {
-      attributes: ['name', 'email'],
+      attributes: ['name', 'photo'],
     });
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto) {
+  async update(updateUserDto: UpdateUserDto, jwt: userJwtPayload) {
     try {
-      await this.user.update(
-        {
-          ...updateUserDto,
-        },
-        {
-          where: {
-            id,
-          },
-        },
-      );
-      return true;
+      const user = await this.user.findByPk(jwt.sub);
+      if (user.hash == jwt.password) {
+        await user.update({
+          name: updateUserDto.name,
+          email: updateUserDto.email,
+        });
+        return true;
+      } else {
+        return false;
+      }
     } catch (e) {
       throw new BadGatewayException('user not found');
     }
@@ -66,5 +58,18 @@ export class UserService {
       },
     });
     return notifications;
+  }
+
+  async addUserPhoto(file: Express.Multer.File, id: number) {
+    await this.user.update(
+      {
+        photo: file.filename,
+      },
+      {
+        where: {
+          id,
+        },
+      },
+    );
   }
 }

@@ -1,7 +1,9 @@
 <header>
     <div class="card">
-        <i (click)="showvalue()" class="pi pi-search"></i>
-        <input type="text" pInputText [formControl]="value" />
+        <div class="user-photo">
+            <img [src]="'http://localhost:3000/user/photo/'+photo()" alt="">
+        </div>
+        <h3>{{name()}}</h3>
     </div>
     <div class="card head">
         <i class="pi pi-bell bell"></i>

@@ -1,0 +1,41 @@
+.head {
+  padding: 10px;
+  text-align: center;
+}
+.edit-form {
+  background-color: aquamarine;
+  padding: 20px;
+  margin-bottom: 20px;
+  justify-self: flex-start;
+  width: 70%;
+  .edit-sec {
+    padding: 10px;
+    background-color: azure;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 20px;
+    width: 100%;
+    input {
+      font-size: 1.4rem;
+      padding: 3px;
+      width: 100%;
+    }
+  }
+}
+
+button {
+  padding: 10px 20px;
+}
+
+.upload p-fileUpload {
+  height: max-content;
+  flex-direction: column;
+  gap: 10px;
+}
+@media screen and (width <= 600px) {
+  .edit-form {
+    width: 100%;
+  }
+}

@@ -1,1 +1,0 @@
-{"version":3,"file":"user-identity.decorator.js","sourceRoot":"","sources":["../../../src/user/user-identity.decorator.ts"],"names":[],"mappings":";;;AAAA,2CAAwE;AAE3D,QAAA,YAAY,GAAG,IAAA,6BAAoB,EAC9C,KAAK,EAAE,IAAa,EAAE,GAAqB,EAAE,EAAE;IAC7C,MAAM,OAAO,GAAG,GAAG,CAAC,YAAY,EAAE,CAAC,UAAU,EAAE,CAAC;IAChD,OAAO,MAAM,OAAO,CAAC,IAAI,CAAC;AAC5B,CAAC,CACF,CAAC"}

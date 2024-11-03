@@ -23,6 +23,13 @@ header {
     cursor: pointer;
   }
 }
+.user-photo {
+  img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+}
 
 @media screen and (width <= 480px) {
   header {

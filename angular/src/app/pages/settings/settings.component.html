@@ -1,1 +1,31 @@
-<section>settings works!</section>
+<section>
+    <div>
+        <h1 class="head">Edit your data</h1>
+    </div>
+    <div class="card">
+        <div class="card flex-column b-rad edit-form">
+            <div class="edit-sec">
+                <label for="edit-name">Name</label>
+                <input [(ngModel)]="name" type="text" id="edit-name" />
+            </div>
+            <div class="edit-sec">
+                <label for="edit-email">Email</label>
+                <input [(ngModel)]="email" type="text" id="edit-email" />
+            </div>
+            <div class="edit-sec">
+                <button (click)="updateNameAndEmail()">Save</button>
+            </div>
+            <div class="upload">
+                <label for="edit-photo">upload your photo</label>
+                <p-fileUpload [style]="{
+                    display: 'flex',
+                    padding: '10px',
+                    flexDirection: 'column',
+                }" mode="advanced" [url]="uploadUrl" name="photo" accept="image/*" maxFileSize="90000000" />
+            </div>
+        </div>
+    </div>
+</section>
+<div style="width: fit-content; margin: auto">
+    <p-messages [showTransitionOptions]="'500ms'" [hideTransitionOptions]="'500ms'" />
+</div>

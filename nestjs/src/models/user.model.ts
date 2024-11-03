@@ -26,6 +26,12 @@ export class User extends Model {
   email: string;
 
   @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  photo: string;
+
+  @Column({
     type: DataType.STRING,
     allowNull: false,
   })

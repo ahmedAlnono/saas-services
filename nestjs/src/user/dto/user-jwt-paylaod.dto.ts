@@ -3,5 +3,5 @@ export interface userJwtPayload {
   email: string;
   password: string;
   iat: number;
-  ext: number;
+  exp: number;
 }

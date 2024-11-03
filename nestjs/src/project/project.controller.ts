@@ -7,6 +7,11 @@ import {
   Param,
   Delete,
   Res,
+  UseInterceptors,
+  UploadedFiles,
+  ParseFilePipe,
+  MaxFileSizeValidator,
+  FileTypeValidator,
 } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
@@ -16,6 +21,7 @@ import { Public } from 'src/user/public.decorator';
 import { UserIdentity } from 'src/user/user-identity.decorator';
 import { userJwtPayload } from 'src/user/dto/user-jwt-paylaod.dto';
 import { Response } from 'express';
+import { FilesInterceptor } from '@nestjs/platform-express';
 
 @Controller('project')
 export class ProjectController {
@@ -34,10 +40,26 @@ export class ProjectController {
     return this.projectService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.projectService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.projectService.findOne(+id);
+  }
+
+  @UseInterceptors(FilesInterceptor('photos', 5))
+  @Post('photos')
+  uploadPhotos(
+    @UploadedFiles(
+      new ParseFilePipe({
+        validators: [
+          new MaxFileSizeValidator({ maxSize: 100 * 1024 * 1024 }),
+          new FileTypeValidator({ fileType: 'image' }),
+        ],
+      }),
+    )
+    photos: Express.Multer.File[],
+  ) {
+    return photos;
+  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {

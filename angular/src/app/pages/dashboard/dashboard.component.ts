@@ -11,9 +11,12 @@ import { InputTextModule } from 'primeng/inputtext';
 })
 export class DashboardComponent {
   isServiceProvider = false;
+  name: string | undefined;
   constructor() {
     if (localStorage.getItem('isServiceProvider') == 'true') {
       this.isServiceProvider = true;
     }
+    const name = sessionStorage.getItem('name');
+    name ? (this.name = name) : (this.name = '');
   }
 }

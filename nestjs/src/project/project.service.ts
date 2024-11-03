@@ -39,7 +39,7 @@ export class ProjectService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} project`;
+    return this.project.findByPk(id);
   }
 
   update(id: number, updateProjectDto: UpdateProjectDto) {

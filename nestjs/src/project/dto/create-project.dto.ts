@@ -20,4 +20,8 @@ export class CreateProjectDto {
   @IsNumber()
   @IsPositive()
   maker: number;
+
+  @IsNumber()
+  @IsPositive()
+  owner: number;
 }

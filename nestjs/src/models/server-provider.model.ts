@@ -32,6 +32,12 @@ export class ServiceProvider extends Model {
   hash: string;
 
   @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+  })
+  photo: string;
+
+  @Column({
     type: DataType.STRING,
     allowNull: true,
   })
@@ -45,7 +51,7 @@ export class ServiceProvider extends Model {
   isActive: boolean;
 
   @Column({
-    type: DataType.ARRAY(DataType.STRING),
+    type: DataType.ARRAY(DataType.TEXT),
     allowNull: false,
   })
   stack: string[];
