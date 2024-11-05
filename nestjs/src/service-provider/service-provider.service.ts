@@ -14,6 +14,7 @@ export class ServiceProviderService {
     const addProvider = await this.serviceProvider.create({
       ...createServiceProviderDto,
     });
+    return `you'r id is ${addProvider.id}`;
   }
 
   async findAll() {

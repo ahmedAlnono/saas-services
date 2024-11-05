@@ -1,3 +1,147 @@
 <section>
-    orders works!
+  <div class="main-container">
+    <p-stepper orientation="vertical">
+      <!-- name and description panel -->
+      <p-stepperPanel header="project data">
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+          let-index="index"
+        >
+          <div class="step-container">
+            <h1>Type Project Data</h1>
+            <div class="card flex-column">
+              <div class="container">
+                <label for="">Project Name</label>
+                <input type="text" [(ngModel)]="name" pInputText />
+              </div>
+              <div></div>
+              <div class="container">
+                <label for="">Project Description</label>
+                <textarea
+                  pInputTextarea
+                  name=""
+                  id=""
+                  rows="8"
+                  [(ngModel)]="description"
+                ></textarea>
+              </div>
+              <div class="step-btn-container">
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="prevCallback.emit()"
+                  label="Prev"
+                  icon="pi pi-arrow-left"
+                />
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="nextCallback.emit()"
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- stack panel -->
+      <p-stepperPanel header="project Stack">
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+          let-index="index"
+        >
+          <div class="step-container">
+            <h1>Choose Project Stack And DeadLine</h1>
+            <div class="card flex-column">
+              <div class="container">
+                <div class="p-fluid">
+                  <p-chips
+                    styleClass="p-fluid"
+                    [(ngModel)]="stackArray"
+                    [inputStyle]="{
+                      fontSize: '1.5rem',
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="container">
+                <input type="date" [(ngModel)]="deadLine" />
+              </div>
+              <div class="step-btn-container">
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="prevCallback.emit()"
+                  label="Prev"
+                  icon="pi pi-arrow-left"
+                />
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="nextCallback.emit()"
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+      <!-- images panel -->
+      <p-stepperPanel header="project Photos">
+        <ng-template
+          pTemplate="content"
+          let-prevCallback="prevCallback"
+          let-nextCallback="nextCallback"
+          let-index="index"
+        >
+          <div class="step-container">
+            <h1>Choose Project Photos</h1>
+            <div class="card flex-column">
+              <div class="container">
+                <label for="">Add Photos</label>
+                <p-fileUpload
+                  name="photos"
+                  [url]="uploadUrl"
+                  [multiple]="true"
+                  accept="image/*"
+                  maxFileSize="1000000"
+                />
+              </div>
+              <div class="step-btn-container">
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="prevCallback.emit()"
+                  label="Prev"
+                  icon="pi pi-arrow-left"
+                />
+                <p-button
+                  [style]="{
+                    padding: '10px'
+                  }"
+                  (onClick)="nextCallback.emit()"
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </p-stepperPanel>
+    </p-stepper>
+  </div>
 </section>

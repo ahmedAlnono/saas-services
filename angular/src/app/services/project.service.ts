@@ -13,7 +13,7 @@ export class ProjectService {
     return this.http.get(serverLink + `/project/${id}`);
   }
 
-  orderProject(data: Project): Observable<any> {
+  createProject(data: Project): Observable<any> {
     return this.http.post(serverLink + '/project', data);
   }
 }

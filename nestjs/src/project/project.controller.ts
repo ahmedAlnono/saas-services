@@ -40,12 +40,16 @@ export class ProjectController {
     return this.projectService.findAll();
   }
 
+  // @UseInterceptors(FilesInterceptor('photos', 5))
+  // @Post()
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.projectService.findOne(+id);
   }
 
   @UseInterceptors(FilesInterceptor('photos', 5))
+  @Public()
   @Post('photos')
   uploadPhotos(
     @UploadedFiles(
@@ -58,7 +62,7 @@ export class ProjectController {
     )
     photos: Express.Multer.File[],
   ) {
-    return photos;
+    return `you upload upload ${photos.length} photos`;
   }
 
   @Patch(':id')
@@ -89,8 +93,12 @@ export class ProjectController {
   }
 
   @Get('sucsess-payment/:project/:user')
-  sucess(@Param('project') project: number, @Param('user') user: number) {
-    return this.projectService.sucsessPay(project, user);
+  sucess(
+    @Param('project') project: number,
+    @Param('user') user: number,
+    @Param('sessionId') sessionId: string,
+  ) {
+    return this.projectService.sucsessPay(project, user, sessionId);
   }
 
   @Public()

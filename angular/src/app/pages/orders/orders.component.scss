@@ -1,0 +1,66 @@
+section h1 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.main-container {
+  padding: 30px;
+}
+.step-container {
+  width: 100%;
+  height: 100%;
+  background-color: #6db6ff;
+  min-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  padding: 15px;
+  background-color: #99b8ff;
+  width: 80%;
+  margin-bottom: 20px;
+  box-shadow: inset 0px 0px 10px 5px #5454eb;
+  border-radius: 8px;
+  input,
+  textarea,
+  p-fileUpload {
+    padding: 5px;
+    font-size: 1.3rem;
+    width: 100%;
+    background-color: #bcd0ff;
+    &:focus {
+      box-shadow: inset 0px 0px 10px 1px #5454eb;
+    }
+  }
+  label {
+    color: black;
+    font-size: 1.1rem;
+  }
+}
+button {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  background-color: inherit;
+}
+
+.step-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+@media screen and (width <= 600px) {
+  .container {
+    width: 100%;
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
+}

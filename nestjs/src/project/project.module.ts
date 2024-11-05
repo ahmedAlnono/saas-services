@@ -8,7 +8,7 @@ import { MulterModule } from '@nestjs/platform-express';
 @Module({
   imports: [
     MulterModule.register({
-      dest: './src/files/uploads',
+      dest: './src/project/photos',
     }),
   ],
   controllers: [ProjectController],

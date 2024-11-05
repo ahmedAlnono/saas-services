@@ -1,12 +1,16 @@
 <header>
-    <div class="card">
-        <div class="user-photo">
-            <img [src]="'http://localhost:3000/user/photo/'+photo()" alt="">
-        </div>
-        <h3>{{name()}}</h3>
+  <div class="card">
+    <div class="user-photo">
+      @if (photo()) {
+      <img [src]="'http://localhost:3000/user/photo/' + photo()" alt="" />
+      } @else {
+      <i class="pi pi-user"> No Photo</i>
+      }
     </div>
-    <div class="card head">
-        <i class="pi pi-bell bell"></i>
-        <p>Notifications</p>
-    </div>
+    <h3>{{ name() }}</h3>
+  </div>
+  <div class="card head">
+    <i class="pi pi-bell bell"></i>
+    <p>Notifications</p>
+  </div>
 </header>

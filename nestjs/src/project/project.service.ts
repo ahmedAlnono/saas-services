@@ -73,13 +73,20 @@ export class ProjectService {
       ],
       mode: 'payment',
       currency: 'usd',
-      success_url: 'http://localhost:3000/projec/sucsess-payment',
-      cancel_url: 'http://localhost:3000/project/cancel-payment',
+      // success_url: 'http://localhost:3000/projec/sucsess-payment/',
+      // cancel_url: 'http://localhost:3000/project/cancel-payment',
     });
+
+    session.success_url = `http://localhost:3000/project/sucsess-payment/?sessionId=${session.id}`;
+    session.cancel_url = 'http://localhost:3000/project/cancel-payment';
     res.redirect(session.url);
   }
 
-  async sucsessPay(project: number, user: number) {
-    return `user number ${user} pay for project number ${project}`;
+  async sucsessPay(project: number, user: number, sessionId: string) {
+    const findSession = await this.stripe.checkout.sessions.retrieve(sessionId);
+    // use this for check if payment is completed
+    // console.log(findSession.payment_status);
+    // console.log(findSession.status);
+    return findSession.payment_status;
   }
 }
