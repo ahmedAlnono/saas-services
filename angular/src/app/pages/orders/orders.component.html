@@ -29,17 +29,7 @@
               </div>
               <div class="step-btn-container">
                 <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
-                  (onClick)="prevCallback.emit()"
-                  label="Prev"
-                  icon="pi pi-arrow-left"
-                />
-                <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
+                  [style]="{ padding: '10px' }"
                   (onClick)="nextCallback.emit()"
                   label="Next"
                   icon="pi pi-arrow-right"
@@ -63,32 +53,36 @@
             <div class="card flex-column">
               <div class="container">
                 <div class="p-fluid">
+                  <label for="">Stack</label>
                   <p-chips
+                    allowDuplicate="false"
                     styleClass="p-fluid"
                     [(ngModel)]="stackArray"
-                    [inputStyle]="{
-                      fontSize: '1.5rem',
-                    }"
+                    [inputStyle]="{fontSize: '1.5rem',}"
                   />
                 </div>
               </div>
               <div class="container">
+                <label for="">Dead Line</label>
                 <input type="date" [(ngModel)]="deadLine" />
               </div>
+              <!-- <div class="container">
+                <label for="">Service Providers</label>
+                <div>
+                  <img src="http://localhost" alt="t" />
+                  <input type="checkbox" />
+                </div>
+              </div> -->
               <div class="step-btn-container">
                 <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
+                  [style]="{padding: '10px',}"
                   (onClick)="prevCallback.emit()"
                   label="Prev"
                   icon="pi pi-arrow-left"
                 />
                 <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
-                  (onClick)="nextCallback.emit()"
+                  [style]="{padding: '10px',}"
+                  (onClick)="createProject(nextCallback)"
                   label="Next"
                   icon="pi pi-arrow-right"
                   iconPos="right"
@@ -116,25 +110,21 @@
                   [url]="uploadUrl"
                   [multiple]="true"
                   accept="image/*"
-                  maxFileSize="1000000"
+                  maxFileSize="10000000"
                 />
               </div>
               <div class="step-btn-container">
                 <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
+                  [style]="{padding: '10px',}"
                   (onClick)="prevCallback.emit()"
                   label="Prev"
                   icon="pi pi-arrow-left"
                 />
                 <p-button
-                  [style]="{
-                    padding: '10px'
-                  }"
-                  (onClick)="nextCallback.emit()"
-                  label="Next"
-                  icon="pi pi-arrow-right"
+                  [style]="{padding: '10px',}"
+                  (onClick)="checkProject()"
+                  label="Save"
+                  icon="pi pi-save"
                   iconPos="right"
                 />
               </div>
@@ -144,4 +134,8 @@
       </p-stepperPanel>
     </p-stepper>
   </div>
+  <p-messages
+    [showTransitionOptions]="'500ms'"
+    [hideTransitionOptions]="'500ms'"
+  />
 </section>

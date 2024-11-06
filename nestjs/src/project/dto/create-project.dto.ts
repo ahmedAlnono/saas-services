@@ -1,5 +1,6 @@
 import {
-  IsDate,
+  IsArray,
+  IsDateString,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -12,16 +13,22 @@ export class CreateProjectDto {
   @IsNotEmpty()
   name: string;
 
+  @IsString()
+  @IsNotEmpty()
+  description: string;
+
+  @IsArray()
+  @IsString({
+    each: true,
+  })
+  stack: string[];
+
   @IsOptional()
-  @IsDate()
+  @IsDateString()
   @IsNotEmpty()
   deadLine: Date;
 
   @IsNumber()
   @IsPositive()
   maker: number;
-
-  @IsNumber()
-  @IsPositive()
-  owner: number;
 }

@@ -33,7 +33,7 @@ export class ServiceProvider extends Model {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
   })
   photo: string;
 
@@ -55,6 +55,7 @@ export class ServiceProvider extends Model {
     allowNull: false,
   })
   stack: string[];
+
   @Column({
     allowNull: true,
     type: DataType.NUMBER,

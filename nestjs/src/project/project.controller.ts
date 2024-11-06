@@ -12,6 +12,7 @@ import {
   ParseFilePipe,
   MaxFileSizeValidator,
   FileTypeValidator,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto } from './dto/create-project.dto';
@@ -40,9 +41,6 @@ export class ProjectController {
     return this.projectService.findAll();
   }
 
-  // @UseInterceptors(FilesInterceptor('photos', 5))
-  // @Post()
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.projectService.findOne(+id);
@@ -50,7 +48,7 @@ export class ProjectController {
 
   @UseInterceptors(FilesInterceptor('photos', 5))
   @Public()
-  @Post('photos')
+  @Post('owner/photos/:id')
   uploadPhotos(
     @UploadedFiles(
       new ParseFilePipe({
@@ -61,8 +59,9 @@ export class ProjectController {
       }),
     )
     photos: Express.Multer.File[],
+    @Param('id', new ParseIntPipe()) id: number,
   ) {
-    return `you upload upload ${photos.length} photos`;
+    return this.projectService.addProjectOwnerPhoto(photos, id);
   }
 
   @Patch(':id')
@@ -81,15 +80,13 @@ export class ProjectController {
     return body;
   }
 
-  @Public()
-  @Post('pay')
-  payForProject(@Res() res: Response) {
-    return this.projectService.payForProject(res);
-  }
-  @Public()
-  @Get('pay')
-  getpayForProject(@Res() res: Response) {
-    return this.projectService.payForProject(res);
+  @Post('pay/:id')
+  payForProject(
+    @Res() res: Response,
+    @UserIdentity() user: userJwtPayload,
+    @Param('id', new ParseIntPipe()) id: number,
+  ) {
+    return this.projectService.payForProject(res, user, id);
   }
 
   @Get('sucsess-payment/:project/:user')

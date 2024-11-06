@@ -3,14 +3,15 @@
     <div class="user-photo">
       @if (photo()) {
       <img [src]="'http://localhost:3000/user/photo/' + photo()" alt="" />
-      } @else {
-      <i class="pi pi-user"> No Photo</i>
-      }
+      } @else { @if(name()){
+      <i class="pi pi-user"> {{ name() }}</i>
+      }@else {
+      <i class="pi pi-user"> User</i>
+      } }
     </div>
     <h3>{{ name() }}</h3>
   </div>
   <div class="card head">
-    <i class="pi pi-bell bell"></i>
-    <p>Notifications</p>
+    <i class="pi pi-bell bell"> Notification</i>
   </div>
 </header>

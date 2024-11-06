@@ -9,11 +9,15 @@ import { Project } from '../models/project.model';
 })
 export class ProjectService {
   constructor(private http: HttpClient) {}
-  getProject(id: number): Observable<any> {
-    return this.http.get(serverLink + `/project/${id}`);
+  getProject(id: number): Observable<boolean> {
+    return this.http.get<boolean>(serverLink + `/project/${id}`);
   }
 
-  createProject(data: Project): Observable<any> {
-    return this.http.post(serverLink + '/project', data);
+  createProject(data: Project): Observable<number> {
+    return this.http.post<number>(serverLink + '/project', data, {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token'),
+      },
+    });
   }
 }

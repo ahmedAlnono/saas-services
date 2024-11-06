@@ -1,54 +1,91 @@
 <div class="mobile-sidebar">
-    <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
-        <div class="sidebar">
-            <div routerLink="/dashboard" class="sidebar-item">
-                <i class="pi pi-user"></i>
-                <h3>Dashboard</h3>
-            </div>
-            <div routerLink="/orders" class="sidebar-item">
-                <i class="pi pi-shopping-cart"></i>
-                <h3>Orders</h3>
-            </div>
-            <div routerLink="/chart" class="sidebar-item">
-                <i class="pi pi-chart-line"></i>
-                <h3>Vehicle Data</h3>
-            </div>
-            <hr>
-            <div routerLink="/settings" class="sidebar-item">
-                <i class="pi pi-cog"></i>
-                <h3>Settings</h3>
-            </div>
-
-        </div>
-    </p-sidebar>
-    <p-button (onClick)="sidebarVisible.set(true)" icon="pi pi-list" [style]="{
-    padding: '8px',
-    position: 'fixed',
-    top: '3px',
-    right: 0,
-    zIndex: 9999999
-}"></p-button>
+  <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
+    <div class="sidebar">
+      <div class="close">
+        <button (click)="sidebarVisible.set(false)">X</button>
+      </div>
+      <div
+        routerLink="/dashboard"
+        (click)="setActive('dashboard')"
+        [classList]="checkActive('dashboard')"
+      >
+        <i class="pi pi-user"></i>
+        <h3>Dashboard</h3>
+      </div>
+      <div
+        routerLink="/orders"
+        (click)="setActive('orders')"
+        [classList]="checkActive('orders')"
+      >
+        <i class="pi pi-shopping-cart"></i>
+        <h3>Orders</h3>
+      </div>
+      <div
+        routerLink="/chart"
+        (click)="setActive('chart')"
+        [classList]="checkActive('chart')"
+      >
+        <i class="pi pi-chart-line"></i>
+        <h3>Vehicle Data</h3>
+      </div>
+      <hr />
+      <div
+        routerLink="/settings"
+        (click)="setActive('settings')"
+        [classList]="checkActive('settings')"
+      >
+        <i class="pi pi-cog"></i>
+        <h3>Settings</h3>
+      </div>
+    </div>
+  </p-sidebar>
+  <p-button
+    (onClick)="sidebarVisible.set(true)"
+    icon="pi pi-list"
+    [style]="{
+      padding: '8px',
+      position: 'fixed',
+      top: '3px',
+      right: 0,
+      zIndex: 9999999
+    }"
+  ></p-button>
 </div>
 
 <div class="desktop-sidebar">
-    <div class="sidebar">
-        <a routerLink="/dashboard" class="sidebar-item">
-            <i class="pi pi-user"></i>
-            <h3>Dashboard</h3>
-        </a>
-        <a routerLink="/orders" class="sidebar-item">
-            <i class="pi pi-shopping-cart"></i>
-            <h3>Orders</h3>
-        </a>
-        <a routerLink="/chart" class="sidebar-item">
-            <i class="pi pi-chart-line"></i>
-            <h3>Vehicle Data</h3>
-        </a>
-        <hr>
-        <a routerLink="/settings" class="sidebar-item">
-            <i class="pi pi-cog"></i>
-            <h3>Settings</h3>
-        </a>
-
-    </div>
+  <div class="sidebar">
+    <a
+      routerLink="/dashboard"
+      (click)="setActive('dashboard')"
+      [classList]="checkActive('dashboard')"
+    >
+      <i class="pi pi-user"></i>
+      <h3>Dashboard</h3>
+    </a>
+    <a
+      routerLink="/orders"
+      (click)="setActive('orders')"
+      [classList]="checkActive('orders')"
+    >
+      <i class="pi pi-shopping-cart"></i>
+      <h3>Orders</h3>
+    </a>
+    <a
+      routerLink="/chart"
+      (click)="setActive('chart')"
+      [classList]="checkActive('chart')"
+    >
+      <i class="pi pi-chart-line"></i>
+      <h3>Vehicle Data</h3>
+    </a>
+    <hr />
+    <a
+      routerLink="/settings"
+      (click)="setActive('settings')"
+      [classList]="checkActive('settings')"
+    >
+      <i class="pi pi-cog"></i>
+      <h3>Settings</h3>
+    </a>
+  </div>
 </div>

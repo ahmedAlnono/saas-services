@@ -31,8 +31,8 @@ export class Project extends Model {
 
   @Column({
     type: DataType.BOOLEAN,
+    allowNull: true,
     defaultValue: false,
-    allowNull: false,
   })
   isCompleter: boolean;
 
@@ -65,8 +65,9 @@ export class Project extends Model {
   })
   deadLine: Date;
 
+  @Column
   @ForeignKey(() => User)
-  owner: User;
+  owner: number;
 
   @HasMany(() => Comment)
   commnets: Comment[];

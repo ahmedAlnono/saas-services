@@ -49,9 +49,9 @@ export class FilesController {
         ],
       }),
     )
-    photos: Express.Multer.File,
+    photo: Express.Multer.File,
   ) {
-    return `you uploaded ${photos.filename}`;
+    return `you uploaded ${photo.filename}`;
   }
 
   @Public()

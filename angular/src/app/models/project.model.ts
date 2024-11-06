@@ -1,7 +1,8 @@
 export interface Project {
   name: string;
   description: string;
-  deadLine: string;
-  maker: string;
-  owner: string;
+  deadLine: Date;
+  stack: string[];
+  maker: number;
+  owner?: number;
 }

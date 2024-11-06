@@ -25,13 +25,43 @@ export class ProjectService {
     );
   }
   async create(createProjectDto: CreateProjectDto, user: userJwtPayload) {
-    const project = await this.project.create({
-      name: createProjectDto.name,
-      deadLine: createProjectDto.deadLine,
-      owner: user.sub,
-      maker: createProjectDto.maker,
-    });
-    return project;
+    try {
+      const project = await this.project.create({
+        name: createProjectDto.name,
+        description: createProjectDto.description,
+        deadLine: createProjectDto.deadLine,
+        stack: createProjectDto.stack,
+        owner: user.sub,
+        maker: createProjectDto.maker,
+      });
+      return project.id;
+    } catch (e) {
+      console.log(e);
+      return 0;
+    }
+  }
+
+  async addProjectOwnerPhoto(photos: Express.Multer.File[], id: number) {
+    try {
+      let names = [];
+      photos.forEach((file) => {
+        names.push(file.filename);
+      });
+      await this.project.update(
+        {
+          owner_photos: names,
+        },
+        {
+          where: {
+            id,
+          },
+        },
+      );
+      console.log(names, photos);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   async findAll() {
@@ -39,7 +69,18 @@ export class ProjectService {
   }
 
   findOne(id: number) {
-    return this.project.findByPk(id);
+    try {
+      const project = this.project.findByPk(id, {
+        attributes: ['name'],
+      });
+      if (project) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
   }
 
   update(id: number, updateProjectDto: UpdateProjectDto) {
@@ -50,7 +91,7 @@ export class ProjectService {
     return `This action removes a #${id} project`;
   }
 
-  async payForProject(res: Response) {
+  async payForProject(res: Response, user: userJwtPayload, id: number) {
     const price = await this.stripe.prices.create({
       currency: 'usd',
       //this is 100.00$
@@ -85,8 +126,8 @@ export class ProjectService {
   async sucsessPay(project: number, user: number, sessionId: string) {
     const findSession = await this.stripe.checkout.sessions.retrieve(sessionId);
     // use this for check if payment is completed
-    // console.log(findSession.payment_status);
-    // console.log(findSession.status);
+    console.log(findSession.payment_status);
+    console.log(findSession.status);
     return findSession.payment_status;
   }
 }

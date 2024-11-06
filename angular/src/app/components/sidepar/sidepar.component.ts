@@ -1,4 +1,4 @@
-import { Component, model, ViewChild } from '@angular/core';
+import { Component, model, signal, ViewChild } from '@angular/core';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { Sidebar } from 'primeng/sidebar';
@@ -27,4 +27,18 @@ export class SidebarHeadless {
   }
 
   sidebarVisible = model(false);
+
+  active = signal<string>('');
+
+  setActive(item: string) {
+    this.active.set(item);
+  }
+
+  checkActive(item: string) {
+    if (item == this.active()) {
+      return 'sidebar-item active';
+    } else {
+      return 'sidebar-item';
+    }
+  }
 }
