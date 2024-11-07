@@ -3,12 +3,10 @@ header {
   justify-content: space-around;
   align-items: center;
   background: #b5e742;
-  z-index: -1;
   position: fixed;
   top: 0;
   right: 0;
-  width: calc(100dvw - 192px);
-  z-index: 2;
+  width: calc(100dvw - 196px);
   i {
     height: 100%;
     width: fit-content;
@@ -46,6 +44,11 @@ header {
     width: 100%;
     div p {
       display: none;
+    }
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 0.7rem;
     }
   }
 }

@@ -111,6 +111,8 @@
                   [multiple]="true"
                   accept="image/*"
                   maxFileSize="10000000"
+                  [customUpload]="true"
+                  (uploadHandler)="uploadFiles($event)"
                 />
               </div>
               <div class="step-btn-container">
@@ -135,6 +137,11 @@
     </p-stepper>
   </div>
   <p-messages
+    [style]="{
+    position: 'absolute',
+    top: '80%',
+    width: '70dvw',
+  }"
     [showTransitionOptions]="'500ms'"
     [hideTransitionOptions]="'500ms'"
   />

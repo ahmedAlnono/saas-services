@@ -1,150 +1,165 @@
 /* You can add global styles to this file, and also import other style files */
 $main-background: linear-gradient(
-    180deg,
-    #2cd8d5 0%,
-    #6b8dd6 50%,
-    #8e37d7 100%
+  180deg,
+  #2cd8d5 0%,
+  #6b8dd6 50%,
+  #8e37d7 100%
 );
 $section-background: #f8c822;
 $item-background: #59adff;
 html {
-    scroll-behavior: auto;
+  scroll-behavior: auto;
 }
 * {
-    transition-duration: 200ms;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    flex-wrap: wrap;
+  transition-duration: 200ms;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  flex-wrap: wrap;
 }
 *::-webkit-scrollbar {
-    width: 2px;
-    background-color: #2b3238;
+  width: 2px;
+  background-color: #2b3238;
 }
 *::-webkit-scrollbar-thumb {
-    background-color: blue;
+  background-color: blue;
 }
 body {
-    padding-bottom: 100px;
-    min-height: 100dvh;
-    background-image: $main-background;
+  padding-bottom: 100px;
+  min-height: 100dvh;
+  background-image: $main-background;
 }
 
 table {
-    border-collapse: collapse;
+  border-collapse: collapse;
 }
 table td {
-    padding: 15px;
+  padding: 15px;
 }
 table thead td {
-    background-color: #54585d;
-    color: #ffffff;
-    font-weight: bold;
-    border: 1px solid #462c11;
+  background-color: #666f7a;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #461111;
 }
 table tbody td {
-    color: black;
-    border: 1px solid #462c11;
+  color: black;
+  border: 1px solid #462c11;
 }
 table tbody tr {
-    background-color: #f9fafb;
+  background-color: #f9fafb;
 }
 table tbody tr:nth-child(odd) {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
-
 button {
-    color: #fff;
-    background: #573b8a;
-    font-size: 1em;
-    font-weight: bold;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    transition: 0.2s ease-in;
-    cursor: pointer;
-    &:hover {
-        background-color: #3224af;
-    }
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+  &:hover {
+    background-color: #3224af;
+  }
 }
 section {
-    margin-top: 45px;
-    margin-left: 200px;
-    background-color: $section-background;
-    box-shadow: 8px 9px 14px 4px #151230;
-    border-radius: 10px;
+  margin-top: 45px;
+  margin-left: 200px;
+  background-color: $section-background;
+  box-shadow: 8px 9px 14px 4px #151230;
+  border-radius: 10px;
+  z-index: -999;
 }
 select {
-    padding: 4px 10px;
-    border: 4px solid $item-background;
-    background-color: $item-background;
-    font-size: 1.2rem;
-    font-weight: bold;
-    outline: none;
-    border-radius: 10px;
-    width: 150px;
+  padding: 4px 10px;
+  border: 4px solid $item-background;
+  background-color: $item-background;
+  font-size: 1.2rem;
+  font-weight: bold;
+  outline: none;
+  border-radius: 10px;
+  width: 150px;
 }
 option {
-    background-color: #fff;
-    color: #151230;
+  background-color: #fff;
+  color: #151230;
 }
 .card {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }
 .flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .b-rad {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
+// custom style for primeng
+
 .p-stepper-header {
-    margin: 5px;
-    .p-stepper-action {
-        text-align: center;
-        display: flex;
-        gap: 5px;
-        padding: 3px;
-    }
-}
-.p-stepper-panel-active {
-    .p-stepper-action {
-        * {
-            color: blue;
-        }
-        .p-stepper-number {
-            background: blue;
-            color: white;
-            font-weight: bold;
-        }
-    }
-}
-.p-chips {
-    ul {
-        li {
-            font-size: 1.1rem;
-            padding: 5px 10px;
-            display: flex;
-            gap: 10px;
-            color: black;
-        }
-    }
-}
-@media screen and (width <= 800px) {
-    section {
-        margin-left: 0;
-        margin-top: 50px;
-    }
-}
-.p-fileupload-buttonbar {
+  margin: 5px;
+  .p-stepper-action {
+    text-align: center;
     display: flex;
     gap: 5px;
+    padding: 3px;
+  }
+}
+.p-stepper-panel-active {
+  .p-stepper-action {
     * {
-        padding: 2px;
+      color: blue;
     }
+    .p-stepper-number {
+      background: blue;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
+.p-chips {
+  ul {
+    li {
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      display: flex;
+      gap: 10px;
+      color: black;
+    }
+  }
+}
+
+.p-message-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  font-size: 2rem;
+  flex-wrap: wrap-reverse;
+  button {
+    margin-left: auto;
+  }
+}
+
+@media screen and (width <= 800px) {
+  section {
+    margin-left: 0;
+    margin-top: 50px;
+  }
+}
+.p-fileupload-buttonbar {
+  display: flex;
+  gap: 5px;
+  * {
+    padding: 2px;
+  }
 }

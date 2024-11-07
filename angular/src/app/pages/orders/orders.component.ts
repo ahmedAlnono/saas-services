@@ -16,6 +16,7 @@ import { serverLink } from '../../constants/main.constants';
 import { FormsModule } from '@angular/forms';
 import { ChipsModule } from 'primeng/chips';
 import { MessageModule } from 'primeng/message';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-orders',
@@ -46,6 +47,7 @@ export class OrdersComponent {
   stack: string = '';
   stackArray = [];
   photos: string[] = [];
+  access_token!: string;
 
   constructor(
     private projectService: ProjectService,
@@ -55,28 +57,29 @@ export class OrdersComponent {
     if (userId) {
       this.userId = +userId;
     }
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      this.access_token = token;
+    }
+    this.messageService.add({
+      severity: 'success',
+      data: 'test message',
+    });
   }
 
-  checkProject() {
-    if (this.projectId) {
-      this.projectService.getProject(this.projectId);
-    } else {
-      this.messageService.add({
-        summary: 'project not created',
-        severity: 'error',
-      });
-    }
-  }
   createProject(nextCallback: any) {
     if (this.userId) {
       this.projectService
-        .createProject({
-          name: this.name,
-          description: this.description,
-          deadLine: this.deadLine,
-          stack: this.stackArray,
-          maker: 1,
-        })
+        .createProject(
+          {
+            name: this.name,
+            description: this.description,
+            deadLine: this.deadLine,
+            stack: this.stackArray,
+            maker: 1,
+          },
+          this.access_token,
+        )
         .subscribe(
           (res) => {
             if (res == 0) {
@@ -89,8 +92,19 @@ export class OrdersComponent {
               this.projectId = res;
             }
           },
-          (e) => {
-            console.log(e);
+          (e: HttpErrorResponse) => {
+            if (e.error.message) {
+              this.messageService.add({
+                summary: e.error.error,
+                detail: `${e.error.message?.toString()}`,
+                severity: 'error',
+              });
+            } else {
+              this.messageService.add({
+                detail: ' server not response',
+                severity: 'error',
+              });
+            }
           },
           () => {
             nextCallback.emit();
@@ -98,8 +112,38 @@ export class OrdersComponent {
         );
     } else {
       this.messageService.add({
-        summary: 'error',
-        detail: 'project not created',
+        summary: 'error: => (wrong userId)',
+        detail: 'be sure that you are logged in',
+        severity: 'error',
+      });
+    }
+  }
+  uploadFiles(e: FileUploadHandlerEvent) {
+    const form: FormData = new FormData();
+    e.files.forEach((file) => {
+      form.append('photos', file);
+    });
+    this.projectService
+      .uplodadPhotos(form, this.projectId, this.access_token)
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+  checkProject() {
+    if (this.projectId) {
+      this.projectService
+        .getProject(this.projectId, this.access_token)
+        .subscribe((res) => {
+          if (res) {
+            this.messageService.add({
+              summary: 'success upload',
+              severity: 'success',
+            });
+          }
+        });
+    } else {
+      this.messageService.add({
+        summary: 'project not created',
         severity: 'error',
       });
     }

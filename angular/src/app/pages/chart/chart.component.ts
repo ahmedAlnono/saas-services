@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-chart',
@@ -11,11 +12,12 @@ import { ChartModule } from 'primeng/chart';
 export class ChartComponent {
   public ChartData: any;
   public ChartOptions: any;
+  constructor(projectService: ProjectService) {}
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
     const textColorSecondary = documentStyle.getPropertyValue(
-      '--text-color-secondary'
+      '--text-color-secondary',
     );
     const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
 
@@ -37,7 +39,7 @@ export class ChartComponent {
       datasets: [
         {
           label: 'Completed',
-          data: [65, 59, 80, 81, 56, 55, 10, 23, 33, 44, 5, 66],
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
           fill: false,
           borderColor: documentStyle.getPropertyValue('--blue-500'),
         },
@@ -47,7 +49,7 @@ export class ChartComponent {
           borderColor: documentStyle.getPropertyValue('--green-500'),
           yAxisID: 'y',
           tension: 0.4,
-          data: [32, 45, 54, 56, 56, 23, 19, 45, 74, 12, 6, 78],
+          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0],
         },
       ],
     };
@@ -84,18 +86,6 @@ export class ChartComponent {
             color: surfaceBorder,
           },
         },
-        // y1: {
-        //   type: 'linear',
-        //   display: true,
-        //   position: 'right',
-        //   ticks: {
-        //     color: textColorSecondary,
-        //   },
-        //   grid: {
-        //     drawOnChartArea: false,
-        //     color: surfaceBorder,
-        //   },
-        // },
       },
     };
   }

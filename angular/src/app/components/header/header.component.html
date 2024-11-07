@@ -4,7 +4,8 @@
       @if (photo()) {
       <img [src]="'http://localhost:3000/user/photo/' + photo()" alt="" />
       } @else { @if(name()){
-      <i class="pi pi-user"> {{ name() }}</i>
+      <i class="pi pi-user"></i>
+      <p style="display: inline">{{ name() }}</p>
       }@else {
       <i class="pi pi-user"> User</i>
       } }
@@ -12,6 +13,7 @@
     <h3>{{ name() }}</h3>
   </div>
   <div class="card head">
-    <i class="pi pi-bell bell"> Notification</i>
+    <i class="pi pi-bell bell"></i>
+    <p>Notification</p>
   </div>
 </header>
